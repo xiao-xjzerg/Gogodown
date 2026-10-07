@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.agents/
+__pycache__/
+*.log
+.DS_Store
+Thumbs.db
+*prompt*.md
+tests/
+tmp/
+agent.md
+PLAN.md
+DEMO.html
+2D_version/

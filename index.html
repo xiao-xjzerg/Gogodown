@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoGoDown</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="styles/game.css">
+</head>
+<body>
+  <main id="gameRoot" aria-label="GoGoDown 3D 游戏画布"></main>
+  <button id="portalReturn" class="portal-return" type="button" hidden>← 返回首页</button>
+
+  <section class="hud hud-center" aria-live="polite">
+    <div class="hud-metric">
+      <span class="metric-label">Floor</span>
+      <strong id="floorValue" class="metric-value">0</strong>
+    </div>
+    <div class="hud-divider" aria-hidden="true"></div>
+    <div class="hud-metric">
+      <span class="metric-label">Level</span>
+      <strong id="levelValue" class="metric-value">1</strong>
+    </div>
+  </section>
+
+  <section class="hud hud-health" aria-live="polite">
+    <span class="metric-label">Health</span>
+    <strong id="healthValue" class="heart-row" aria-label="3 生命">♥ ♥ ♥</strong>
+  </section>
+
+  <div id="statusBanner" class="status-banner" role="status" aria-live="assertive">LEVEL UP</div>
+
+  <section id="startOverlay" class="overlay">
+    <div class="dialog start-dialog">
+      <p class="eyebrow">Endless Falling Challenge</p>
+      <h1>GoGoDown</h1>
+      <p class="dialog-copy">左右移动，踩住更低的平台，躲开尖刺和顶部天花板。下落越深，楼层越高。</p>
+      <section class="control-guide" aria-label="游戏操作提示">
+        <div class="control-guide-item">
+          <span class="control-keys"><kbd>A</kbd><kbd>←</kbd></span>
+          <span>向左移动</span>
+        </div>
+        <div class="control-guide-item">
+          <span class="control-keys"><kbd>D</kbd><kbd>→</kbd></span>
+          <span>向右移动</span>
+        </div>
+        <div class="control-guide-item">
+          <span class="control-keys control-keys-wide"><kbd>Space</kbd></span>
+          <span>跳跃</span>
+        </div>
+      </section>
+      <button id="startBtn" class="command-btn" type="button">开始游戏</button>
+    </div>
+  </section>
+
+  <section id="gameOverOverlay" class="overlay is-hidden">
+    <div class="dialog gameover-dialog">
+      <p class="eyebrow">Run Finished</p>
+      <h1>GAME OVER</h1>
+      <p id="finalStats" class="dialog-copy">You reached Floor 0!</p>
+      <p id="bestStats" class="best-copy">Best Floor 0</p>
+      <form id="leaderboardForm" class="leaderboard-form">
+        <input id="playerName" class="name-input" type="text" maxlength="16" autocomplete="off" placeholder="输入玩家名" aria-label="玩家名">
+        <button id="saveScoreBtn" class="command-btn save-score-btn" type="submit">保存排名</button>
+      </form>
+      <p id="portalStatus" class="portal-status" role="status" hidden></p>
+      <button id="portalRetry" class="portal-retry" type="button" hidden>重试同步成绩</button>
+      <section class="leaderboard-panel" aria-label="楼层排行榜">
+        <div class="leaderboard-title">楼层排行榜</div>
+        <div class="leaderboard-head"><span>名次</span><span>玩家</span><span>成绩</span><span>日期</span></div>
+        <ol id="leaderboardList" class="leaderboard-list"></ol>
+      </section>
+      <button id="restartBtn" class="command-btn restart-btn" type="button">再玩一次</button>
+    </div>
+  </section>
+
+  <nav class="touch-controls" aria-label="触屏操作">
+    <button class="touch-btn" type="button" data-action="left" aria-label="左移">←</button>
+    <button class="touch-btn" type="button" data-action="right" aria-label="右移">→</button>
+  </nav>
+
+  <script src="js/config.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/leaderboard.js"></script>
+  <script src="js/gamehub.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
