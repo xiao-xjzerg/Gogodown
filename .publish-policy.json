@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "project": "Gogodown",
+  "repository": "https://github.com/xiao-xjzerg/Gogodown.git",
+  "nodeVersion": "26.10.0",
+  "files": [
+    ".gitattributes",
+    ".githooks/pre-commit",
+    ".githooks/pre-push",
+    ".gitignore",
+    ".node-version",
+    ".publish-policy.json",
+    "ARCHITECTURE.md",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md",
+    "index.html",
+    "scripts/check-public.mjs"
+  ],
+  "directories": [
+    "styles",
+    "js",
+    "assets/sounds",
+    "third_party"
+  ]
+}
